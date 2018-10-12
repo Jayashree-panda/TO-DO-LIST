@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MY TO DO APPLICATION</title>
+</head>
+<body>
+	<h2>MY TO DO APPLICATION</h2>
+	<form>
+		<label>Task name
+		<input type="text" placeholder="meditate" id="input-task">
+		</label>
+		
+		<button type="button" id="add-task">Add task</button>
+		
+	</form> 
+	<ul id="container">
+	</ul>
+	<script type="text/template" id="list-item-template">
+		<li>
+			<label>
+				<input type="checkbox">
+				<!-- taskname -->
+			</label>
+		</li>
+	</script>
+	<script>
+		var addTask=document.getElementById('add-task');
+		var inputTask=document.getElementById('input-task');
+		var container=document.getElementById('container');
+		var template_element=document.getElementById('list-item-template');
+		var template=template_element.innerText;
+		addTask.addEventListener('click',function(event){
+			var input_task=inputTask.value;
+			inputTask.value="";
+			var taskHTML= template.replace('<!-- taskname -->',input_task);
+			container.insertAdjacentHTML('afterbegin',taskHTML);
+		});
+	</script>
+</body>
+</html>
